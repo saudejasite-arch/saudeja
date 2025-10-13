@@ -1,14 +1,21 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Allerta as Aspekta } from "next/font/google";
+import { Allerta, Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Suspense } from "react";
 
-const aspekta = Aspekta({
+const aspekta = Allerta({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-aspekta",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  weight: ["700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -26,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`font-sans ${aspekta.variable} antialiased`}>
+      <body
+        className={`font-sans ${aspekta.variable} ${poppins.variable} antialiased`}
+      >
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
