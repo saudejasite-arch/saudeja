@@ -16,7 +16,6 @@ import {
   MapPin,
   Menu,
   X,
-  MessageCircle,
 } from "lucide-react";
 import {
   Dialog,
@@ -158,14 +157,13 @@ export default function SaudeJaLandingPage() {
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Heart className="w-8 h-8 text-[#61B097]" />
-            <span className="text-2xl font-bold text-[#61B097]">Saúde Já</span>
+            <img src="/LOGOSJ.png" alt="Saúde Já" className="h-8" />
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-[#61B097] hover:text-[#61A0B0] transition-colors font-medium"
+              className="text-slate-600 hover:text-[#61A0B0] transition-colors font-medium"
             >
               Início
             </button>
@@ -232,7 +230,7 @@ export default function SaudeJaLandingPage() {
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="text-[#61B097] hover:text-[#61A0B0] transition-colors text-left font-medium"
+                className="text-slate-600 hover:text-[#61A0B0] transition-colors text-left font-medium"
               >
                 Início
               </button>
@@ -329,7 +327,21 @@ export default function SaudeJaLandingPage() {
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
         aria-label="WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-6 h-6"
+        >
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          <path d="M14.05 14.05a7 7 0 0 1-9.9-9.9" />
+        </svg>
       </button>
 
       <Dialog
@@ -478,7 +490,7 @@ function EspecialidadesSection() {
   ];
 
   return (
-    <section id="especialidades" className="py-20 bg-white" ref={ref}>
+    <section id="especialidades" className="py-12 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-bold text-[#61B097] text-center mb-12 transition-all duration-1000 ${
@@ -523,7 +535,7 @@ function EspecialistasSection({
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="especialistas" className="py-20 bg-[#61A0B0]" ref={ref}>
+    <section id="especialistas" className="py-12 bg-[#61A0B0]" ref={ref}>
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-bold text-white text-center mb-4 transition-all duration-1000 ${
@@ -607,7 +619,7 @@ function ExamesSection() {
   ];
 
   return (
-    <section id="exames" className="py-20 bg-white" ref={ref}>
+    <section id="exames" className="py-12 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-bold text-[#61B097] text-center mb-12 transition-all duration-1000 ${
@@ -646,7 +658,7 @@ function ConhecaSaudeJaSection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="conheca-saude-ja" className="py-20 bg-[#b4ece9]" ref={ref}>
+    <section id="conheca-saude-ja" className="py-12 bg-[#b4ece9]" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
@@ -728,7 +740,7 @@ function TourClinicaSection() {
   ];
 
   return (
-    <section id="tour-clinica" className="py-20 bg-white" ref={ref}>
+    <section id="tour-clinica" className="py-12 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-bold text-[#61B097] text-center mb-4 transition-all duration-1000 ${
@@ -789,7 +801,7 @@ function FuncionamentoSection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 bg-[#b4ece9]" ref={ref}>
+    <section className="py-12 bg-[#b4ece9]" ref={ref}>
       <div
         className={`container mx-auto px-4 text-center transition-all duration-1000 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -811,7 +823,7 @@ function LocalizacaoSection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 bg-white" ref={ref}>
+    <section className="py-12 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-bold text-[#61B097] text-center mb-4 transition-all duration-1000 ${
@@ -870,7 +882,7 @@ function CTASection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-24 bg-[#61A0B0]" ref={ref}>
+    <section className="py-16 bg-[#61A0B0]" ref={ref}>
       <div
         className={`container mx-auto px-4 text-center transition-all duration-1000 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -904,7 +916,19 @@ function Footer() {
                 <span>(11) 9999-9999</span>
               </div>
               <div className="flex items-center gap-2">
-                <MessageCircle className="w-5 h-5" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
                 <span>WhatsApp: (11) 9999-9999</span>
               </div>
               <div className="flex items-center gap-2">
@@ -933,14 +957,23 @@ function Footer() {
                   window.open("https://wa.me/5511999999999", "_blank")
                 }
               >
-                <MessageCircle className="w-6 h-6" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
               </button>
               <button className="hover:scale-110 transition-transform">
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-2.664 4.771-4.919 4.919-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.204-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               </button>
@@ -948,7 +981,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-t border-white/20 pt-8 text-center">
-          <p>© 2025 Saúde Já. Todos os direitos reservados.</p>
+          <p>© 2025 Saúde Já. @EZZECOMUNICAÇÃO.</p>
         </div>
       </div>
     </footer>
