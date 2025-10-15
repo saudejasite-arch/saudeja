@@ -105,9 +105,9 @@ export default function SaudeJaLandingPage() {
 
   const specialists = [
     {
-      name: "Dra. Maria Silva",
+      name: "Dra. Milena Arrais",
       specialty: "Cardiologista",
-      photo: "/female-doctor-cardiologist-professional-headshot.jpg",
+      photo: "/milena.jpg",
       description:
         "Especialista em cardiologia com mais de 15 anos de experiência. Formada pela USP, com pós-graduação em cardiologia intervencionista.",
       details:
@@ -115,9 +115,9 @@ export default function SaudeJaLandingPage() {
       crm: "CRM 123456-SP",
     },
     {
-      name: "Dr. João Santos",
+      name: "Dr. Luis Cavalcanti",
       specialty: "Pediatra",
-      photo: "/male-doctor-pediatrician-professional-headshot.jpg",
+      photo: "/luis.jpg",
       description:
         "Pediatra dedicado ao cuidado infantil há 12 anos. Especialista em desenvolvimento infantil e vacinação.",
       details:
@@ -125,7 +125,7 @@ export default function SaudeJaLandingPage() {
       crm: "CRM 234567-SP",
     },
     {
-      name: "Dra. Ana Costa",
+      name: "Dra. Caline",
       specialty: "Ginecologista",
       photo: "/female-doctor-gynecologist-professional-headshot.jpg",
       description:
@@ -135,7 +135,7 @@ export default function SaudeJaLandingPage() {
       crm: "CRM 345678-SP",
     },
     {
-      name: "Dr. Carlos Oliveira",
+      name: "Dr. Vinicius Eudes",
       specialty: "Geriatra",
       photo: "/male-doctor-geriatrician-professional-headshot.jpg",
       description:
@@ -452,7 +452,7 @@ function HeroSection() {
             }`}
           >
             <img
-              src="/happy-healthcare-professionals-smiling-in-modern-c.jpg"
+              src="/hero.jpg"
               alt="Profissionais de saúde"
               className="rounded-2xl shadow-2xl"
             />
@@ -821,6 +821,11 @@ function FuncionamentoSection() {
 
 function LocalizacaoSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const address =
+    "R. N S da Glória, 203 - Campo Grande, Recife - PE, 52031-050";
+  const mapUrl = `https://maps.google.com/maps?q=${encodeURI(
+    address
+  )}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <section className="py-12 bg-white" ref={ref}>
@@ -839,7 +844,7 @@ function LocalizacaoSection() {
         >
           Venha nos visitar
         </p>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -847,16 +852,18 @@ function LocalizacaoSection() {
                 : "opacity-0 -translate-x-10"
             }`}
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1976290724845!2d-46.65391842378056!3d-23.561414061236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1704900000000!5m2!1spt-BR!2sbr"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Saúde Já"
-            />
+            <div className="rounded-lg overflow-hidden shadow-2xl">
+              <iframe
+                src={mapUrl}
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localização Saúde Já"
+              />
+            </div>
           </div>
           <div
             className={`space-y-6 transition-all duration-1000 delay-300 ${
@@ -865,12 +872,30 @@ function LocalizacaoSection() {
                 : "opacity-0 translate-x-10"
             }`}
           >
-            <div className="inline-flex items-center gap-2 bg-[#b4ece9] px-6 py-3 rounded-full">
-              <MapPin className="w-5 h-5 text-[#61B097]" />
-              <span className="text-[#61B097] font-semibold">
-                Rua da Saúde, 123 - Centro, São Paulo - SP
-              </span>
+            <div className="flex items-start gap-4 bg-[#b4ece9] p-6 rounded-lg">
+              <MapPin className="w-8 h-8 text-[#61B097] mt-1" />
+              <div>
+                <h3 className="text-xl font-bold text-[#61B097] mb-2">
+                  Nosso Endereço
+                </h3>
+                <p className="text-slate-700 font-semibold text-lg">
+                  {address}
+                </p>
+              </div>
             </div>
+            <Button
+              className="bg-[#61A0B0] hover:bg-[#61B097] text-white"
+              onClick={() =>
+                window.open(
+                  `https://www.google.com/maps/search/?api=1&query=${encodeURI(
+                    address
+                  )}`,
+                  "_blank"
+                )
+              }
+            >
+              Ver no Google Maps
+            </Button>
           </div>
         </div>
       </div>
@@ -907,7 +932,10 @@ function Footer() {
   return (
     <footer id="contato" className="py-12 bg-[#61A0B0] text-white">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8 items-center">
+          <div>
+            <img src="/logo23.png" alt="Saúde Já" className="h-45 mb-4" />
+          </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Contato</h3>
             <div className="space-y-3">
@@ -940,11 +968,11 @@ function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Endereço</h3>
             <div className="flex items-start gap-2">
-              <MapPin className="w-5 h-5 mt-1" />
+              <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
               <span>
-                Rua da Saúde, 123
+                R. N S da Glória, 203 - Campo Grande,
                 <br />
-                Centro - São Paulo, SP
+                Recife - PE, 52031-050
               </span>
             </div>
           </div>
