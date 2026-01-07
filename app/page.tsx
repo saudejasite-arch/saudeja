@@ -64,6 +64,12 @@ export default function SaudeJaLandingPage() {
     null
   );
 
+  // --- ÁREA DE LINKS PARA TRÁFEGO ---
+  // Edite aqui para mudar em todo o site
+  const whatsappLink = "https://wa.me/5511999999999?text=Olá, gostaria de agendar uma consulta.";
+  // Link direto para rota no Google Maps
+  const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -144,13 +150,15 @@ export default function SaudeJaLandingPage() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </button>
             ))}
+            
+            {/* OTIMIZAÇÃO: Link real para rastreamento */}
             <Button
+              asChild
               className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5"
-              onClick={() =>
-                window.open("https://wa.me/5511999999999", "_blank")
-              }
             >
-              Agendar Consulta
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                Agendar Consulta
+              </a>
             </Button>
           </nav>
 
@@ -190,15 +198,17 @@ export default function SaudeJaLandingPage() {
                   {item}
                 </button>
               ))}
-              <Button className="w-full bg-primary text-white mt-4 rounded-xl py-6 text-lg">
-                Agendar pelo WhatsApp
+              <Button asChild className="w-full bg-primary text-white mt-4 rounded-xl py-6 text-lg">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                    Agendar pelo WhatsApp
+                </a>
               </Button>
             </nav>
           </div>
         )}
       </header>
 
-      <HeroSection />
+      <HeroSection whatsappLink={whatsappLink} />
 
       <section className="py-20 relative z-10 -mt-20">
         <div className="container-custom">
@@ -250,12 +260,15 @@ export default function SaudeJaLandingPage() {
 
       <TourClinicaSection />
 
-      <LocalizacaoSection />
+      <LocalizacaoSection mapsLink={mapsLink} />
 
       <Footer />
 
-      <button
-        onClick={() => window.open("https://wa.me/5511999999999", "_blank")}
+      {/* Botão Flutuante Otimizado (Link Real) */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:scale-110 z-50 flex items-center gap-2 group"
         aria-label="Falar no WhatsApp"
       >
@@ -265,7 +278,7 @@ export default function SaudeJaLandingPage() {
         <span className="hidden group-hover:block whitespace-nowrap font-medium">
           Falar agora
         </span>
-      </button>
+      </a>
 
       <Dialog
         open={selectedSpecialist !== null}
@@ -312,13 +325,11 @@ export default function SaudeJaLandingPage() {
                   <p className="text-xs text-slate-400 font-mono">
                     {specialists[selectedSpecialist].crm}
                   </p>
-                  <Button
-                    onClick={() =>
-                      window.open("https://wa.me/5511999999999", "_blank")
-                    }
-                    className="rounded-full"
-                  >
-                    Agendar Consulta
+                  {/* OTIMIZAÇÃO: Botão do modal agora é link */}
+                  <Button asChild className="rounded-full">
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                        Agendar Consulta
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -330,7 +341,8 @@ export default function SaudeJaLandingPage() {
   );
 }
 
-function HeroSection() {
+// Recebe o link via props para manter consistência
+function HeroSection({ whatsappLink }: { whatsappLink: string }) {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -369,16 +381,21 @@ function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* OTIMIZAÇÃO: Botão Hero agora é link */}
               <Button
+                asChild
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white text-lg h-14 px-8 rounded-full shadow-lg shadow-primary/25 transition-transform hover:-translate-y-1"
               >
-                Agendar Consulta
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                    Agendar Consulta
+                </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-2 border-slate-200 text-slate-600 hover:border-primary hover:text-primary text-lg h-14 px-8 rounded-full bg-transparent"
+                onClick={() => document.getElementById("sobre")?.scrollIntoView({behavior: "smooth"})}
               >
                 Conhecer Clínica
               </Button>
@@ -714,7 +731,7 @@ function TourClinicaSection() {
   );
 }
 
-function LocalizacaoSection() {
+function LocalizacaoSection({ mapsLink }: { mapsLink: string }) {
   return (
     <section id="contato" className="py-24 bg-slate-50">
       <div className="container-custom">
@@ -769,11 +786,15 @@ function LocalizacaoSection() {
               </Card>
             </div>
 
+            {/* OTIMIZAÇÃO: Botão de mapa agora é link */}
             <Button
+              asChild
               size="lg"
               className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white rounded-full h-12 text-lg px-8"
             >
-              Ver rota no Google Maps
+              <a href={mapsLink} target="_blank" rel="noopener noreferrer">
+                Ver rota no Google Maps
+              </a>
             </Button>
           </div>
 
