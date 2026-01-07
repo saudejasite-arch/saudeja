@@ -451,7 +451,7 @@ function ConhecaSection() {
             </div>
             <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg">
               <img
-                src="/conheça.JPG"
+                src="/123.JPG"
                 alt="Recepção moderna da Clínica Saúde Já em Recife"
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 loading="lazy"
