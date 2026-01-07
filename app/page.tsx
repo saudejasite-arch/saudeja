@@ -28,7 +28,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-// Hook para animação de entrada suave ao rolar a página
 const useScrollAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +64,6 @@ export default function SaudeJaLandingPage() {
     null
   );
 
-  // Efeito para mudar o header ao rolar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -82,7 +80,6 @@ export default function SaudeJaLandingPage() {
     }
   };
 
-  // Dados dos Especialistas (Apenas Milena e Luis)
   const specialists = [
     {
       name: "Dra. Milena Arrais",
@@ -106,7 +103,6 @@ export default function SaudeJaLandingPage() {
 
   return (
     <div className="min-h-screen font-sans bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
-      {/* Header Moderno */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent ${
           isScrolled ? "glass-nav py-3" : "bg-transparent py-6"
@@ -117,7 +113,6 @@ export default function SaudeJaLandingPage() {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => scrollToSection("inicio")}
           >
-            {/* Logo Texto Elegante */}
             <div className="font-heading text-2xl font-bold bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent">
               Saúde Já.
             </div>
@@ -162,12 +157,12 @@ export default function SaudeJaLandingPage() {
           <button
             className="md:hidden text-slate-800 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Abrir menu"
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-xl animate-fade-in-up">
             <nav className="flex flex-col p-6 gap-4">
@@ -205,7 +200,6 @@ export default function SaudeJaLandingPage() {
 
       <HeroSection />
 
-      {/* Seção de Features/Diferenciais */}
       <section className="py-20 relative z-10 -mt-20">
         <div className="container-custom">
           <div className="grid md:grid-cols-3 gap-6">
@@ -260,10 +254,10 @@ export default function SaudeJaLandingPage() {
 
       <Footer />
 
-      {/* Botão Flutuante WhatsApp */}
       <button
         onClick={() => window.open("https://wa.me/5511999999999", "_blank")}
         className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:scale-110 z-50 flex items-center gap-2 group"
+        aria-label="Falar no WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
@@ -273,7 +267,6 @@ export default function SaudeJaLandingPage() {
         </span>
       </button>
 
-      {/* Modal do Especialista */}
       <Dialog
         open={selectedSpecialist !== null}
         onOpenChange={() => setSelectedSpecialist(null)}
@@ -286,8 +279,9 @@ export default function SaudeJaLandingPage() {
                   src={
                     specialists[selectedSpecialist].photo || "/placeholder.svg"
                   }
-                  alt={specialists[selectedSpecialist].name}
+                  alt={`Foto do especialista ${specialists[selectedSpecialist].name}`}
                   className="w-full h-64 md:h-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="p-8 md:w-2/3 space-y-6">
@@ -401,8 +395,9 @@ function HeroSection() {
             <div className="relative z-10">
               <img
                 src="/hero.jpg"
-                alt="Médica sorrindo"
+                alt="Médica atendendo paciente na Clínica Saúde Já"
                 className="w-[90%] ml-auto rounded-[2.5rem] shadow-2xl object-cover aspect-[4/5] hover:scale-[1.02] transition-transform duration-700"
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -470,8 +465,9 @@ function ConhecaSection() {
             <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg">
               <img
                 src="/modern-medical-clinic-reception-area-with-comforta.jpg"
-                alt="Recepção da clínica"
+                alt="Recepção moderna da Clínica Saúde Já em Recife"
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
             </div>
           </div>
@@ -586,12 +582,12 @@ function EspecialistasSection({
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => onSelectSpecialist(index)}
             >
-              {/* Foto Colorida e Vibrante */}
               <div className="aspect-[4/5] overflow-hidden bg-slate-200">
                 <img
                   src={specialist.photo || "/placeholder.svg"}
-                  alt={specialist.name}
+                  alt={`Foto de perfil do ${specialist.name} - ${specialist.specialty}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60"></div>
               </div>
@@ -621,7 +617,6 @@ function EspecialistasSection({
 function ExamesSection() {
   const { ref, isVisible } = useScrollAnimation();
 
-  // Dados dos exames (reintegrados)
   const exams = [
     {
       icon: Activity,
@@ -648,7 +643,6 @@ function ExamesSection() {
       className="py-24 bg-slate-50 relative overflow-hidden"
       ref={ref}
     >
-      {/* Elementos Decorativos */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12"></div>
 
       <div className="container-custom relative z-10">
@@ -712,11 +706,11 @@ function TourClinicaSection() {
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {/* Imagem Única da Fachada/Recepção */}
           <img
             src="/modern-medical-clinic-reception-desk-with-friendly.jpg"
-            alt="Fachada da Clínica Saúde Já"
+            alt="Fachada e recepção da Clínica Saúde Já em Recife"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
+            loading="lazy"
           />
 
           <div className="absolute bottom-0 left-0 right-0 p-12 bg-gradient-to-t from-black/80 to-transparent">
@@ -804,6 +798,7 @@ function LocalizacaoSection() {
               style={{ border: 0 }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa de Localização da Clínica Saúde Já"
             ></iframe>
           </div>
         </div>
@@ -818,11 +813,11 @@ function Footer() {
       <div className="container-custom">
         <div className="grid md:grid-cols-4 gap-12 mb-12 border-b border-white/10 pb-12">
           <div className="space-y-6">
-            {/* Logo Branca Original */}
             <img
               src="/logo23.png"
-              alt="Saúde Já Logo"
+              alt="Saúde Já Logo Branca"
               className="h-12 w-auto brightness-0 invert opacity-90"
+              loading="lazy"
             />
             <p className="text-white/70 leading-relaxed">
               Cuidando de você com excelência, tecnologia e carinho. Sua saúde é
@@ -832,12 +827,14 @@ function Footer() {
               <a
                 href="#"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
