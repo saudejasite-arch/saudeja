@@ -447,24 +447,11 @@ function ConhecaSection() {
                   sobre prevenir, acolher e promover qualidade de vida.
                 </p>
               </div>
-              <div className="pt-4 flex gap-8">
-                <div>
-                  <p className="text-4xl font-bold text-primary">15+</p>
-                  <p className="text-sm text-slate-500 font-medium">
-                    Anos de História
-                  </p>
-                </div>
-                <div>
-                  <p className="text-4xl font-bold text-primary">10k+</p>
-                  <p className="text-sm text-slate-500 font-medium">
-                    Pacientes Felizes
-                  </p>
-                </div>
-              </div>
+
             </div>
             <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg">
               <img
-                src="/modern-medical-clinic-reception-area-with-comforta.jpg"
+                src="/conheça.jpg"
                 alt="Recepção moderna da Clínica Saúde Já em Recife"
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 loading="lazy"
@@ -707,7 +694,7 @@ function TourClinicaSection() {
           }`}
         >
           <img
-            src="/modern-medical-clinic-reception-desk-with-friendly.jpg"
+            src="/faixada.jpg"
             alt="Fachada e recepção da Clínica Saúde Já em Recife"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
             loading="lazy"
