@@ -19,8 +19,7 @@ import {
   Instagram,
   Facebook,
   CheckCircle2,
-  MessageCircle,
-  CalendarCheck, // Ícone novo para variar
+  MessageCircle, // Usado como ícone do WhatsApp
 } from "lucide-react";
 import {
   Dialog,
@@ -67,7 +66,7 @@ export default function SaudeJaLandingPage() {
   );
 
   // --- CONFIGURAÇÃO DE LINKS ---
-  // Número atualizado conforme solicitado: (81) 3204-5760
+  // Número: (81) 3204-5760
   const whatsappLink = "https://wa.me/558132045760?text=Olá, gostaria de agendar uma consulta.";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
 
@@ -251,17 +250,17 @@ export default function SaudeJaLandingPage() {
       </section>
 
       {/* DIVISOR 1 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <ConhecaSection />
 
       {/* DIVISOR 2 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <EspecialidadesSection />
 
       {/* DIVISOR 3 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <EspecialistasSection
         specialists={specialists}
@@ -269,33 +268,33 @@ export default function SaudeJaLandingPage() {
       />
 
       {/* DIVISOR 4 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <ExamesSection />
 
       {/* DIVISOR 5 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <TourClinicaSection />
 
       {/* DIVISOR 6 */}
-      <SectionDividerCTA whatsappLink={whatsappLink} />
+      <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
       <LocalizacaoSection mapsLink={mapsLink} />
 
       <Footer />
 
-      {/* --- BOTÃO FLUTUANTE --- */}
+      {/* --- BOTÃO FLUTUANTE (Mantido, mas garantindo que esteja acima de tudo) --- */}
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:scale-110 z-50 flex items-center gap-2 group"
+        className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:scale-110 z-[60] flex items-center gap-2 group"
         aria-label="Agendar via WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
-        <span className="hidden group-hover:block whitespace-nowrap font-medium">
-          Agendar Agora
+        <MessageCircle className="w-7 h-7" />
+        <span className="hidden group-hover:block whitespace-nowrap font-medium text-lg pr-2">
+          Agendar no WhatsApp
         </span>
       </a>
 
@@ -304,7 +303,7 @@ export default function SaudeJaLandingPage() {
         open={selectedSpecialist !== null}
         onOpenChange={() => setSelectedSpecialist(null)}
       >
-        <DialogContent className="max-w-2xl border-none shadow-2xl p-0 overflow-hidden bg-white rounded-3xl">
+        <DialogContent className="max-w-2xl border-none shadow-2xl p-0 overflow-hidden bg-white rounded-3xl z-[70]">
           {selectedSpecialist !== null && (
             <div className="flex flex-col md:flex-row">
               <div className="w-full md:w-1/3 bg-slate-100">
@@ -360,28 +359,29 @@ export default function SaudeJaLandingPage() {
   );
 }
 
-// --- NOVO COMPONENTE: DIVISOR DE SEÇÃO COM CTA ---
-function SectionDividerCTA({ whatsappLink }: { whatsappLink: string }) {
+// --- NOVO COMPONENTE: DIVISOR PREMIUM WHATSAPP ---
+function PremiumWhatsAppDivider({ whatsappLink }: { whatsappLink: string }) {
   return (
-    <div className="py-2 bg-transparent">
-      <div className="container-custom">
-        <div className="relative flex items-center justify-center">
-          {/* Linhas laterais */}
-          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-          
-          {/* Botão Centralizado com fundo branco para "cortar" a linha */}
-          <div className="relative z-10 bg-background px-4">
-             <Button
-                asChild
-                variant="outline"
-                className="rounded-full border-primary/30 hover:border-primary text-primary hover:bg-primary/5 px-8 h-10 transition-all duration-300 group"
-              >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <CalendarCheck className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  <span className="font-medium">Agendar Consulta</span>
-                </a>
-              </Button>
-          </div>
+    <div className="py-8 w-full flex justify-center items-center">
+      <div className="container-custom relative">
+        <div className="absolute top-1/2 left-0 w-full h-px bg-slate-100 -z-10 hidden md:block"></div>
+        
+        <div className="flex justify-center">
+             <a 
+                href={whatsappLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative flex items-center gap-4 bg-white/80 backdrop-blur-sm border border-slate-100 shadow-xl shadow-green-500/10 rounded-full p-2 pl-6 pr-2 hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-1"
+             >
+                <div className="flex flex-col items-start mr-2">
+                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Não espere mais</span>
+                    <span className="text-lg font-bold text-slate-700 group-hover:text-green-600 transition-colors">Agendar Consulta</span>
+                </div>
+
+                <div className="h-12 w-12 bg-gradient-to-br from-[#25D366] to-[#128C7E] rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+                    <MessageCircle className="w-6 h-6 fill-current" />
+                </div>
+             </a>
         </div>
       </div>
     </div>
