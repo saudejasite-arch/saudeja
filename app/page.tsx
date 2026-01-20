@@ -63,7 +63,7 @@ export default function SaudeJaLandingPage() {
     null
   );
 
-  const whatsappLink = "https://wa.me/558132045750?text=Olá, gostaria de agendar uma consulta.";
+  const whatsappLink = "https://wa.me/558132045760?text=Olá, gostaria de agendar uma consulta.";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
 
   useEffect(() => {
