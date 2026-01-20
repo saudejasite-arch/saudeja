@@ -20,6 +20,7 @@ import {
   Facebook,
   CheckCircle2,
   MessageCircle,
+  CalendarCheck, // Ícone novo para variar
 } from "lucide-react";
 import {
   Dialog,
@@ -27,6 +28,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+// --- HOOKS ---
 const useScrollAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -56,6 +58,7 @@ const useScrollAnimation = () => {
   return { ref, isVisible };
 };
 
+// --- COMPONENTE PRINCIPAL ---
 export default function SaudeJaLandingPage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -63,6 +66,8 @@ export default function SaudeJaLandingPage() {
     null
   );
 
+  // --- CONFIGURAÇÃO DE LINKS ---
+  // Número atualizado conforme solicitado: (81) 3204-5760
   const whatsappLink = "https://wa.me/558132045760?text=Olá, gostaria de agendar uma consulta.";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
 
@@ -105,6 +110,7 @@ export default function SaudeJaLandingPage() {
 
   return (
     <div className="min-h-screen font-sans bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
+      {/* --- HEADER --- */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent ${
           isScrolled ? "glass-nav py-3" : "bg-transparent py-6"
@@ -203,8 +209,10 @@ export default function SaudeJaLandingPage() {
         )}
       </header>
 
+      {/* --- HERO SECTION --- */}
       <HeroSection whatsappLink={whatsappLink} />
 
+      {/* --- FEATURES GRID --- */}
       <section className="py-20 relative z-10 -mt-20">
         <div className="container-custom">
           <div className="grid md:grid-cols-3 gap-6">
@@ -242,23 +250,42 @@ export default function SaudeJaLandingPage() {
         </div>
       </section>
 
+      {/* DIVISOR 1 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
+
       <ConhecaSection />
 
+      {/* DIVISOR 2 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
+
       <EspecialidadesSection />
+
+      {/* DIVISOR 3 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
 
       <EspecialistasSection
         specialists={specialists}
         onSelectSpecialist={setSelectedSpecialist}
       />
 
+      {/* DIVISOR 4 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
+
       <ExamesSection />
 
+      {/* DIVISOR 5 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
+
       <TourClinicaSection />
+
+      {/* DIVISOR 6 */}
+      <SectionDividerCTA whatsappLink={whatsappLink} />
 
       <LocalizacaoSection mapsLink={mapsLink} />
 
       <Footer />
 
+      {/* --- BOTÃO FLUTUANTE --- */}
       <a
         href={whatsappLink}
         target="_blank"
@@ -268,10 +295,11 @@ export default function SaudeJaLandingPage() {
       >
         <MessageCircle className="w-6 h-6" />
         <span className="hidden group-hover:block whitespace-nowrap font-medium">
-          Agendar no WhatsApp
+          Agendar Agora
         </span>
       </a>
 
+      {/* --- MODAL ESPECIALISTAS --- */}
       <Dialog
         open={selectedSpecialist !== null}
         onOpenChange={() => setSelectedSpecialist(null)}
@@ -331,6 +359,36 @@ export default function SaudeJaLandingPage() {
     </div>
   );
 }
+
+// --- NOVO COMPONENTE: DIVISOR DE SEÇÃO COM CTA ---
+function SectionDividerCTA({ whatsappLink }: { whatsappLink: string }) {
+  return (
+    <div className="py-2 bg-transparent">
+      <div className="container-custom">
+        <div className="relative flex items-center justify-center">
+          {/* Linhas laterais */}
+          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+          
+          {/* Botão Centralizado com fundo branco para "cortar" a linha */}
+          <div className="relative z-10 bg-background px-4">
+             <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-primary/30 hover:border-primary text-primary hover:bg-primary/5 px-8 h-10 transition-all duration-300 group"
+              >
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <CalendarCheck className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">Agendar Consulta</span>
+                </a>
+              </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- SEÇÕES DO SITE ---
 
 function HeroSection({ whatsappLink }: { whatsappLink: string }) {
   const { ref, isVisible } = useScrollAnimation();
