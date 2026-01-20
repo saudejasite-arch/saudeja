@@ -19,12 +19,11 @@ import {
   Instagram,
   Facebook,
   CheckCircle2,
-  ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 
@@ -64,16 +63,8 @@ export default function SaudeJaLandingPage() {
     null
   );
 
-  // --- ÁREA DE LINKS ---
-  // Nota: Mantenha o link do WhatsApp para os botões de "Agendar Consulta" no topo
-  // Se o número fixo (87) 3304-5760 for WhatsApp Business, substitua o número abaixo.
-  const whatsappLink = "https://wa.me/558733045760?text=Olá, gostaria de agendar uma consulta."; 
-  
-  // Link direto para rota no Google Maps
+  const whatsappLink = "https://wa.me/558130945028?text=Olá, gostaria de agendar uma consulta.";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
-  
-  // Link do Instagram para o botão flutuante
-  const instagramLink = "https://www.instagram.com/clinica.saudeja/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -268,18 +259,16 @@ export default function SaudeJaLandingPage() {
 
       <Footer />
 
-      {/* Botão Flutuante Otimizado (INSTAGRAM) */}
       <a
-        href={instagramLink}
+        href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        // Alterado a cor para um tom próximo ao do Instagram (Pink/Purple) ou mantendo destaque
-        className="fixed bottom-8 right-8 bg-[#E1306C] hover:bg-[#C13584] text-white p-4 rounded-full shadow-2xl hover:shadow-pink-500/30 transition-all duration-300 hover:scale-110 z-50 flex items-center gap-2 group"
-        aria-label="Siga no Instagram"
+        className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:scale-110 z-50 flex items-center gap-2 group"
+        aria-label="Agendar via WhatsApp"
       >
-        <Instagram className="w-6 h-6" />
+        <MessageCircle className="w-6 h-6" />
         <span className="hidden group-hover:block whitespace-nowrap font-medium">
-          Siga no Instagram
+          Agendar no WhatsApp
         </span>
       </a>
 
@@ -343,7 +332,6 @@ export default function SaudeJaLandingPage() {
   );
 }
 
-// Recebe o link via props para manter consistência
 function HeroSection({ whatsappLink }: { whatsappLink: string }) {
   const { ref, isVisible } = useScrollAnimation();
 
@@ -914,7 +902,7 @@ function Footer() {
             <ul className="space-y-4 text-white/70">
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary" />
-                (87) 3304-5760
+                (81) 3094-5028
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />
