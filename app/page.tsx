@@ -63,7 +63,7 @@ export default function SaudeJaLandingPage() {
     null
   );
 
-  const whatsappLink = "https://wa.me/558130945028?text=Olá, gostaria de agendar uma consulta.";
+  const whatsappLink = "https://wa.me/558132045750?text=Olá, gostaria de agendar uma consulta.";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=R.+N+S+da+Glória,+203+-+Campo+Grande,+Recife+-+PE";
 
   useEffect(() => {
@@ -902,7 +902,7 @@ function Footer() {
             <ul className="space-y-4 text-white/70">
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary" />
-                (81) 3094-5028
+                (81) 3204-5760
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />
