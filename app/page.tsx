@@ -378,7 +378,7 @@ function GaleriaSection() {
 
   // GERA A LISTA DE FOTOS AUTOMATICAMENTE DE 1.jpg A 15.jpg
   // As 4 primeiras (índices 0, 1, 2, 3) têm classes especiais para o Grid
-  const galleryImages = Array.from({ length: 15 }, (_, i) => {
+  const galleryImages = Array.from({ length: 13 }, (_, i) => {
     let gridClass = "hidden"; // Padrão: esconde do grid inicial (aparece só no modal)
 
     // Configuração do Bento Grid (apenas para as 4 primeiras)
