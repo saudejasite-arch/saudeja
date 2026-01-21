@@ -19,13 +19,21 @@ import {
   Instagram,
   Facebook,
   CheckCircle2,
-  MessageCircle, // Usado como ícone do WhatsApp
+  MessageCircle,
+  Maximize2, // Ícone para abrir a galeria
 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // --- HOOKS ---
 const useScrollAnimation = () => {
@@ -280,11 +288,14 @@ export default function SaudeJaLandingPage() {
       {/* DIVISOR 6 */}
       <PremiumWhatsAppDivider whatsappLink={whatsappLink} />
 
+      {/* --- GALERIA DE FOTOS --- */}
+      <GaleriaSection />
+
       <LocalizacaoSection mapsLink={mapsLink} />
 
       <Footer />
 
-      {/* --- BOTÃO FLUTUANTE (Mantido, mas garantindo que esteja acima de tudo) --- */}
+      {/* --- BOTÃO FLUTUANTE --- */}
       <a
         href={whatsappLink}
         target="_blank"
@@ -359,7 +370,141 @@ export default function SaudeJaLandingPage() {
   );
 }
 
-// --- NOVO COMPONENTE: DIVISOR PREMIUM WHATSAPP ---
+// --- NOVO COMPONENTE: GALERIA COM BENTO GRID E CARROSSEL ---
+function GaleriaSection() {
+  const { ref, isVisible } = useScrollAnimation();
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // GERA A LISTA DE FOTOS AUTOMATICAMENTE DE 1.jpg A 15.jpg
+  // As 4 primeiras (índices 0, 1, 2, 3) têm classes especiais para o Grid
+  const galleryImages = Array.from({ length: 15 }, (_, i) => {
+    let gridClass = "hidden"; // Padrão: esconde do grid inicial (aparece só no modal)
+
+    // Configuração do Bento Grid (apenas para as 4 primeiras)
+    if (i === 0) gridClass = "md:col-span-2 md:row-span-2 block"; // Foto Grande (Esquerda)
+    if (i === 1) gridClass = "md:col-span-1 md:row-span-1 block"; // Foto Pequena (Topo Meio)
+    if (i === 2) gridClass = "md:col-span-1 md:row-span-1 block"; // Foto Pequena (Topo Direita)
+    if (i === 3) gridClass = "md:col-span-2 md:row-span-1 block"; // Foto Larga (Baixo Direita)
+
+    return {
+      src: `/${i + 1}.jpg`, // 1.jpg, 2.jpg, ...
+      alt: `Ambiente da Clínica Saúde Já - Foto ${i + 1}`,
+      className: gridClass,
+    };
+  });
+
+  return (
+    <section id="galeria" className="py-24 bg-white" ref={ref}>
+      <div className="container-custom">
+        <div className="text-center mb-12 space-y-4">
+          <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+            Nossa Estrutura
+          </span>
+          <h2 className="text-4xl font-bold text-slate-900">
+            Ambiente pensado em você
+          </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Conforto, modernidade e tecnologia para garantir o melhor
+            atendimento. Toque nas fotos para ampliar.
+          </p>
+        </div>
+
+        {/* --- GRID MOSAICO (BENTO GRID) --- */}
+        {/* Mostra apenas as 4 primeiras fotos definidas no array */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px] transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          {galleryImages.slice(0, 4).map((image, index) => (
+            <div
+              key={index}
+              className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 ${image.className}`}
+              onClick={() => {
+                setCurrentSlide(index);
+                setIsGalleryOpen(true);
+              }}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Overlay Hover */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white">
+                  <Maximize2 className="w-6 h-6" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Botão para abrir galeria completa */}
+        <div className="mt-8 flex justify-center">
+          <Button
+            variant="outline"
+            className="rounded-full border-primary text-primary hover:bg-primary hover:text-white h-12 px-8 text-lg transition-all"
+            onClick={() => setIsGalleryOpen(true)}
+          >
+            Ver todas as {galleryImages.length} fotos
+          </Button>
+        </div>
+      </div>
+
+      {/* --- MODAL (LIGHTBOX) COM CARROSSEL --- */}
+      <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
+        <DialogContent className="max-w-[95vw] h-[90vh] md:max-w-7xl p-0 border-none bg-transparent shadow-none flex items-center justify-center">
+          <div className="relative w-full h-full flex flex-col justify-center">
+            
+            {/* Botão Fechar Customizado */}
+            <button 
+                onClick={() => setIsGalleryOpen(false)}
+                className="absolute top-2 right-2 md:-top-4 md:-right-4 z-50 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all border border-white/20"
+            >
+                <X className="w-6 h-6"/>
+            </button>
+
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+                startIndex: currentSlide,
+              }}
+              className="w-full max-w-6xl mx-auto"
+            >
+              <CarouselContent>
+                {galleryImages.map((image, index) => (
+                  <CarouselItem key={index} className="basis-full">
+                    {/* Container da imagem ajustado para evitar cortes no modal */}
+                    <div className="flex items-center justify-center h-[80vh] p-2 relative">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="max-h-full max-w-full rounded-xl object-contain shadow-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              {/* Navegação */}
+              <CarouselPrevious className="hidden md:flex bg-black/30 border-none text-white hover:bg-black/60 hover:text-white h-12 w-12" />
+              <CarouselNext className="hidden md:flex bg-black/30 border-none text-white hover:bg-black/60 hover:text-white h-12 w-12" />
+            </Carousel>
+            
+            {/* Contador de Slides */}
+            <p className="text-center text-white/80 mt-4 text-sm font-medium bg-black/30 w-fit mx-auto px-4 py-1 rounded-full backdrop-blur-sm">
+                Deslize para ver mais
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+}
+
+// --- DIVISOR PREMIUM WHATSAPP ---
 function PremiumWhatsAppDivider({ whatsappLink }: { whatsappLink: string }) {
   return (
     <div className="py-8 w-full flex justify-center items-center">
@@ -388,7 +533,7 @@ function PremiumWhatsAppDivider({ whatsappLink }: { whatsappLink: string }) {
   );
 }
 
-// --- SEÇÕES DO SITE ---
+// --- OUTRAS SEÇÕES ---
 
 function HeroSection({ whatsappLink }: { whatsappLink: string }) {
   const { ref, isVisible } = useScrollAnimation();
