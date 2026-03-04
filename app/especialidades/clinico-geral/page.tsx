@@ -103,8 +103,8 @@ export default function ClinicoGeralLandingPage() {
                 </div>
               </div>
 
-              {/* Elemento flutuante de prova social */}
-              <Card className="absolute -bottom-6 -left-6 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 animate-fade-in-up hidden md:flex items-center gap-4">
+              {/* Elemento flutuante de prova social MOVIDO PARA O TOPO ESQUERDO */}
+              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 animate-fade-in-up hidden md:flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <CalendarCheck className="w-6 h-6" />
                 </div>

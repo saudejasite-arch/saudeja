@@ -1,0 +1,134 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Flower2,
+  MessageCircle,
+  Stethoscope,
+  Activity,
+  CalendarCheck,
+  Phone,
+  MapPin
+} from "lucide-react";
+
+export default function GinecologiaLandingPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const whatsappLink = "https://wa.me/558132045760?text=Olá! Quero agendar minha consulta de rotina com a Ginecologista na Saúde Já.";
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen font-sans bg-background text-foreground selection:bg-pink-400 selection:text-white">
+      
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-nav py-3" : "bg-white/80 backdrop-blur-md py-4 border-b border-slate-100"}`}>
+        <div className="container-custom flex items-center justify-between">
+          <div className="font-heading text-2xl font-bold bg-gradient-to-r from-pink-500 to-rose-400 bg-clip-text text-transparent">
+            Saúde Já.
+          </div>
+          <Button asChild className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6 shadow-md transition-all">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Agendar Check-up</a>
+          </Button>
+        </div>
+      </header>
+
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-to-br from-pink-50 via-white to-rose-50/40">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-pink-200/20 rounded-full blur-3xl"></div>
+        
+        <div className="container-custom relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-sm font-semibold">
+                <Activity className="w-4 h-4" />
+                Consulta + Preventivo (Papanicolau)
+              </div>
+              
+              <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
+                Saúde íntima tratada com <span className="text-pink-500 italic">respeito e conforto.</span>
+              </h1>
+              
+              <p className="text-xl text-slate-600 leading-relaxed max-w-lg">
+                Um espaço pensado exclusivamente para a saúde da mulher. Faça seus exames de rotina em um único lugar, com rapidez e sem constrangimentos.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg h-14 px-8 rounded-full shadow-xl shadow-green-500/20 transition-transform hover:-translate-y-1 group">
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Agendar via WhatsApp
+                  </a>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 pt-6 border-t border-slate-200/60 mt-8">
+                <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
+                  <Stethoscope className="w-5 h-5 text-pink-500" /> Especialistas em Saúde da Mulher
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                <img 
+                  src="/female-doctor-gynecologist-professional-headshot.jpg" 
+                  alt="Médica Ginecologista" 
+                  className="w-full h-auto object-cover aspect-[4/5]"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-20 text-white">
+                  <h3 className="text-2xl font-bold">Dra. Especialista</h3>
+                  <p className="text-pink-300 font-medium">Ginecologia e Obstetrícia</p>
+                </div>
+              </div>
+
+              {/* Gatilho de Conveniência (CRO) */}
+              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 hidden md:flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
+                  <Flower2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500 font-medium">Conveniência</p>
+                  <p className="text-slate-900 font-bold">Tudo no mesmo dia</p>
+                </div>
+              </Card>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Cuidamos de você em todas as fases
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Prevenção Anual", desc: "Coleta de preventivo (Papanicolau), exame clínico das mamas e solicitação de exames de imagem." },
+              { title: "Planejamento Familiar", desc: "Orientação sobre métodos contraceptivos (DIU, implantes, pílulas) adequados ao seu perfil." },
+              { title: "Menopausa", desc: "Acompanhamento especializado para alívio dos sintomas e reposição hormonal segura." }
+            ].map((item, i) => (
+              <div key={i} className="glass-card p-8 rounded-2xl border border-slate-100 hover:border-pink-300 transition-colors">
+                <Flower2 className="w-8 h-8 text-pink-500 mb-4" />
+                <h3 className="text-xl font-bold text-slate-800 mb-2">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <Footer whatsappLink={whatsappLink} />
+    </div>
+  );
+}
+
+function Footer({ whatsappLink }: { whatsappLink: string }) { /* Mesmo componente do anterior */ return (<></>); }
