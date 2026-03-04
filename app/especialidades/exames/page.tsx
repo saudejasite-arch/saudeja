@@ -119,7 +119,7 @@ export default function ExamesLandingPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Coleta Gentil (Kids & Adultos)", desc: "Profissionais com "mão leve", treinados para minimizar o desconforto na hora da punção venosa, inclusive em crianças e pacientes com veias difíceis." },
+              { title: "Coleta Gentil (Kids & Adultos)", desc: "Profissionais com 'mão leve', treinados para minimizar o desconforto na hora da punção venosa, inclusive em crianças e pacientes com veias difíceis." },
               { title: "Agilidade no Orçamento", desc: "Não precisa vir à clínica para saber os valores. Basta tirar uma foto da guia médica, enviar pelo WhatsApp e aprovamos na hora." },
               { title: "Amplo Menu de Exames", desc: "Realizamos desde exames de rotina (Hemograma, Glicose, Colesterol) até testes genéticos, hormonais avançados e toxicológicos." }
             ].map((item, i) => (
