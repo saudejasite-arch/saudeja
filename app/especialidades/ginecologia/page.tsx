@@ -8,7 +8,6 @@ import {
   MessageCircle,
   Stethoscope,
   Activity,
-  CalendarCheck,
   Phone,
   MapPin
 } from "lucide-react";
@@ -26,6 +25,7 @@ export default function GinecologiaLandingPage() {
   return (
     <div className="min-h-screen font-sans bg-background text-foreground selection:bg-pink-400 selection:text-white">
       
+      {/* HEADER MINIMALISTA */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-nav py-3" : "bg-white/80 backdrop-blur-md py-4 border-b border-slate-100"}`}>
         <div className="container-custom flex items-center justify-between">
           <div className="font-heading text-2xl font-bold bg-gradient-to-r from-pink-500 to-rose-400 bg-clip-text text-transparent">
@@ -37,6 +37,7 @@ export default function GinecologiaLandingPage() {
         </div>
       </header>
 
+      {/* HERO SECTION GINECOLOGIA */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-to-br from-pink-50 via-white to-rose-50/40">
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-pink-200/20 rounded-full blur-3xl"></div>
         
@@ -86,8 +87,8 @@ export default function GinecologiaLandingPage() {
                 </div>
               </div>
 
-              {/* Gatilho de Conveniência (CRO) */}
-              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 hidden md:flex items-center gap-4">
+              {/* Gatilho de Conveniência (CRO) MOVIDO PARA O TOPO ESQUERDO */}
+              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 hidden md:flex items-center gap-4 border-l-4 border-l-pink-500">
                 <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
                   <Flower2 className="w-6 h-6" />
                 </div>
@@ -126,9 +127,52 @@ export default function GinecologiaLandingPage() {
         </div>
       </section>
       
-      <Footer whatsappLink={whatsappLink} />
+      {/* FOOTER COMPLETO PADRÃO SAÚDE JÁ */}
+      <footer className="bg-[#1a4f5a] text-white pt-16 pb-8 mt-10">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
+            <div className="space-y-6">
+              <div className="font-heading text-3xl font-bold text-white">Saúde Já.</div>
+              <p className="text-white/70 leading-relaxed">
+                Cuidando de você com excelência, tecnologia e carinho. Sua saúde é nossa prioridade.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-primary">Endereço</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary mt-1" />
+                  <span>R. N S da Glória, 203 - Campo Grande<br/>Recife - PE, 52031-050</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-primary">Contato Urgente</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-primary" />
+                  (81) 3204-5760
+                </li>
+                <li>
+                  <Button asChild className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white mt-2">
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Agendar via WhatsApp</a>
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center text-sm text-white/50">
+            <p>© 2026 Saúde Já. Todos os direitos reservados. Design by @EZZECOMUNICAÇÃO</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* BOTÃO FLUTUANTE DE WHATSAPP */}
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-[60] flex items-center gap-2 group">
+        <MessageCircle className="w-7 h-7" />
+        <span className="hidden md:block group-hover:block whitespace-nowrap font-medium pr-2">Agendar Consulta</span>
+      </a>
     </div>
   );
 }
-
-function Footer({ whatsappLink }: { whatsappLink: string }) { /* Mesmo componente do anterior */ return (<></>); }

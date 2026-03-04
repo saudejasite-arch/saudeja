@@ -24,21 +24,21 @@ export default function PsiquiatriaLandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans bg-background text-foreground selection:bg-primary selection:text-white">
+    <div className="min-h-screen font-sans bg-background text-foreground selection:bg-blue-500 selection:text-white">
       
-      {/* HEADER */}
+      {/* HEADER MINIMALISTA */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-nav py-3" : "bg-white/80 backdrop-blur-md py-4 border-b border-slate-100"}`}>
         <div className="container-custom flex items-center justify-between">
-          <div className="font-heading text-2xl font-bold bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent">
+          <div className="font-heading text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text text-transparent">
             Saúde Já.
           </div>
-          <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-md transition-all">
+          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 shadow-md transition-all">
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
           </Button>
         </div>
       </header>
 
-      {/* HERO SECTION - TONS MAIS SUAVES E ACOLHEDORES */}
+      {/* HERO SECTION - TONS ACOLHEDORES */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/50">
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl"></div>
         
@@ -91,8 +91,8 @@ export default function PsiquiatriaLandingPage() {
                 </div>
               </div>
 
-              {/* Gatilho de Empatia Diferenciado */}
-              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 hidden md:flex items-center gap-4">
+              {/* Gatilho de Empatia MOVIDO PARA O TOPO ESQUERDO */}
+              <Card className="absolute top-10 -left-4 lg:-left-10 p-4 rounded-2xl shadow-xl border-none bg-white/95 backdrop-blur-sm z-20 hidden md:flex items-center gap-4 border-l-4 border-l-blue-500">
                 <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                   <Sparkles className="w-6 h-6" />
                 </div>
@@ -107,7 +107,7 @@ export default function PsiquiatriaLandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO: SINAIS DE ALERTA (Foco em dores emocionais) */}
+      {/* SEÇÃO: SINAIS DE ALERTA */}
       <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -135,42 +135,52 @@ export default function PsiquiatriaLandingPage() {
         </div>
       </section>
 
-      <Footer whatsappLink={whatsappLink} />
-    </div>
-  );
-}
-
-// O Componente Footer pode ser extraído para um arquivo compartilhado depois, 
-// mas aqui está embutido para manter o código completo.
-function Footer({ whatsappLink }: { whatsappLink: string }) {
-  return (
-    <footer className="bg-[#1a4f5a] text-white pt-16 pb-8 mt-10">
-      <div className="container-custom">
-        <div className="grid md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
-          <div className="space-y-6">
-            <div className="font-heading text-3xl font-bold text-white">Saúde Já.</div>
-            <p className="text-white/70 leading-relaxed">Sua saúde e bem-estar são nossa prioridade absoluta.</p>
+      {/* FOOTER COMPLETO PADRÃO SAÚDE JÁ */}
+      <footer className="bg-[#1a4f5a] text-white pt-16 pb-8 mt-10">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
+            <div className="space-y-6">
+              <div className="font-heading text-3xl font-bold text-white">Saúde Já.</div>
+              <p className="text-white/70 leading-relaxed">
+                Cuidando de você com excelência, tecnologia e carinho. Sua saúde é nossa prioridade.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-primary">Endereço</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary mt-1" />
+                  <span>R. N S da Glória, 203 - Campo Grande<br/>Recife - PE, 52031-050</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-primary">Contato Urgente</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-primary" />
+                  (81) 3204-5760
+                </li>
+                <li>
+                  <Button asChild className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white mt-2">
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Agendar via WhatsApp</a>
+                  </Button>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h4 className="text-lg font-bold mb-6 text-primary">Endereço</h4>
-            <ul className="space-y-4 text-white/70">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-1" />
-                <span>R. N S da Glória, 203 - Campo Grande<br/>Recife - PE</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-bold mb-6 text-primary">Contato</h4>
-            <ul className="space-y-4 text-white/70">
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary" />
-                (81) 3204-5760
-              </li>
-            </ul>
+          <div className="text-center text-sm text-white/50">
+            <p>© 2026 Saúde Já. Todos os direitos reservados. Design by @EZZECOMUNICAÇÃO</p>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      {/* BOTÃO FLUTUANTE DE WHATSAPP */}
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-[60] flex items-center gap-2 group">
+        <MessageCircle className="w-7 h-7" />
+        <span className="hidden md:block group-hover:block whitespace-nowrap font-medium pr-2">Agendar Consulta</span>
+      </a>
+    </div>
   );
 }
