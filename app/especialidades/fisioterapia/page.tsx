@@ -86,8 +86,8 @@ export default function FisioterapiaLandingPage() {
                   className="w-full h-auto object-cover aspect-[4/5]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-20 text-white">
-                  <h3 className="text-2xl font-bold">Dr. Especialista</h3>
-                  <p className="text-teal-300 font-medium">Fisioterapia Traumato-Ortopédica</p>
+                  <h3 className="text-2xl font-bold">Dr.Teodoro Antunes </h3>
+                  <p className="text-teal-300 font-medium">CREFITO 299392-F</p>
                 </div>
               </div>
 

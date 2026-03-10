@@ -81,13 +81,13 @@ export default function NutricaoLandingPage() {
             <div className="relative">
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img 
-                  src="/placeholder.jpg" 
+                  src="/image3.jpeg" 
                   alt="Consulta com Nutricionista" 
                   className="w-full h-auto object-cover aspect-[4/5]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-20 text-white">
-                  <h3 className="text-2xl font-bold">Dra. Especialista</h3>
-                  <p className="text-emerald-300 font-medium">Nutrição Clínica e Desportiva</p>
+                  <h3 className="text-2xl font-bold">Dr. Marcelo Arruda </h3>
+                  <p className="text-emerald-300 font-medium">CRN 45991</p>
                 </div>
               </div>
 

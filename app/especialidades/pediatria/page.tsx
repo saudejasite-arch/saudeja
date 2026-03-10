@@ -86,8 +86,8 @@ export default function PediatriaLandingPage() {
                   className="w-full h-auto object-cover aspect-[4/5]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-20 text-white">
-                  <h3 className="text-2xl font-bold">Dr. Luis Cavalcanti</h3>
-                  <p className="text-orange-300 font-medium">Pediatria e Puericultura • CRM 38.618-PE</p>
+                  <h3 className="text-2xl font-bold">Dra. Ana Cristina</h3>
+                  <p className="text-orange-300 font-medium">CRM 34861</p>
                 </div>
               </div>
 
