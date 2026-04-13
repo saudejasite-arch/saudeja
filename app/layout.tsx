@@ -132,7 +132,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Google Tag Manager (HEAD) */}
+        {/* --- INÍCIO: TAGS DE RASTREAMENTO --- */}
+
+        {/* Google Tag Manager (Gestor A) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -142,7 +144,19 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-MXVBGFN5');`,
           }}
         />
-        {/* End Google Tag Manager */}
+
+        {/* Google Tag Manager (Gestor B - NOVO) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MFK3Z64D');`,
+          }}
+        />
+
+        {/* --- FIM: TAGS DE RASTREAMENTO --- */}
 
         {/* Injeção do Schema JSON-LD */}
         <script
@@ -154,7 +168,9 @@ export default function RootLayout({
       <body
         className={`font-sans ${aspekta.variable} ${poppins.variable} antialiased`}
       >
-        {/* Google Tag Manager (BODY - NOSCRIPT) */}
+        {/* --- INÍCIO: NOSCRIPTS DO GTM --- */}
+
+        {/* Google Tag Manager (noscript) - Gestor A */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MXVBGFN5"
@@ -163,7 +179,18 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
+
+        {/* Google Tag Manager (noscript) - Gestor B - NOVO */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MFK3Z64D"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
+        {/* --- FIM: NOSCRIPTS DO GTM --- */}
 
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
