@@ -5,8 +5,7 @@ import Link from "next/link";
 import {
   Activity,
   Microscope,
-  MonitorHeart,
-  HeartPulse,
+  Heart,
   Clock,
   CheckCircle2,
   MessageCircle,
@@ -14,7 +13,8 @@ import {
   ChevronDown,
   ArrowLeft,
   ShieldCheck,
-  Stethoscope
+  Stethoscope,
+  Monitor
 } from "lucide-react";
 
 // --- HOOKS DE ANIMAÇÃO ---
@@ -48,7 +48,7 @@ const useScrollAnimation = () => {
 const categoriasExames = [
   {
     titulo: "Exames Cardiológicos",
-    icone: HeartPulse,
+    icone: Heart,
     descricao: "Avaliação completa da saúde do seu coração com laudos rápidos.",
     exames: [
       "Eletrocardiograma (ECG)",
@@ -61,7 +61,7 @@ const categoriasExames = [
   },
   {
     titulo: "Exames de Imagem (Ultrassonografia)",
-    icone: MonitorHeart,
+    icone: Monitor,
     descricao: "Equipamentos de alta resolução para diagnósticos precisos.",
     exames: [
       "Ultrassom Transvaginal",
@@ -116,7 +116,7 @@ export default function ExamesLandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-primary selection:text-white">
       
-      {/* HEADER SIMPLIFICADO (Foco em conversão: Sem menu de navegação que distraia) */}
+      {/* HEADER SIMPLIFICADO */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="container-custom mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-slate-600 hover:text-primary transition-colors">
@@ -138,7 +138,7 @@ export default function ExamesLandingPage() {
         </div>
       </header>
 
-      {/* HERO SECTION (Foco na dor do cliente: Diagnóstico exato e rápido) */}
+      {/* HERO SECTION */}
       <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-white to-[#E0F7FA] relative overflow-hidden" ref={heroRef}>
         <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl"></div>
         <div className="container-custom mx-auto px-6 relative z-10">
@@ -177,7 +177,7 @@ export default function ExamesLandingPage() {
         </div>
       </section>
 
-      {/* CATÁLOGO DE EXAMES (Organizado e fácil de ler) */}
+      {/* CATÁLOGO DE EXAMES */}
       <section className="py-20 bg-white">
         <div className="container-custom mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -271,7 +271,7 @@ export default function ExamesLandingPage() {
         </div>
       </section>
 
-      {/* BOTÃO FLUTUANTE DO WHATSAPP (Sempre visível no canto) */}
+      {/* BOTÃO FLUTUANTE DO WHATSAPP */}
       <a
         href={whatsappLink}
         target="_blank"
@@ -290,7 +290,6 @@ export default function ExamesLandingPage() {
 }
 
 // --- SUB-COMPONENTE PARA O ACORDEÃO DO FAQ ---
-// Usando um componente local para evitar bugs de dependência do Shadcn em novas páginas
 function FaqItem({ pergunta, resposta }: { pergunta: string; resposta: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
