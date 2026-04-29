@@ -19,21 +19,32 @@ import {
 } from "@/components/ui/carousel";
 
 import {
-  Baby,
   Heart,
+  Baby,
   Users,
   Flower2,
-  Stethoscope,
-  Brain,
   Activity,
+  Stethoscope,
+  Clock,
+  Phone,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+  Instagram,
+  Facebook,
+  CheckCircle2,
+  MessageCircle,
+  Maximize2,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  Brain,
   Apple,
   BrainCircuit,
   HeartPulse,
   Monitor,
-  TestTube,
-  ArrowRight,
-  ChevronDown,
-  ChevronUp,
+  TestTube
 } from "lucide-react";
 // --- HOOKS ---
 const useScrollAnimation = () => {
