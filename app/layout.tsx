@@ -50,6 +50,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // CONFIGURAÇÃO DE FAVICONS (Ícone do Google)
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png' },
+    ],
+    shortcut: ['/icon.png'],
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -87,7 +97,7 @@ export default function RootLayout({
     "image": "https://www.saudeja.com.br/logo23.png",
     "@id": "https://www.saudeja.com.br",
     "url": "https://www.saudeja.com.br",
-    "telephone": "+5581999999999",
+    "telephone": "+558132045760",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "R. N S da Glória, 203 - Campo Grande",
@@ -124,7 +134,7 @@ export default function RootLayout({
     "priceRange": "$$",
     "medicalSpecialty": ["Cardiologia", "Pediatria", "Ginecologia", "Geriatria"],
     "sameAs": [
-      "https://www.instagram.com/saudeja",
+      "https://www.instagram.com/clinica.saudeja/",
       "https://www.facebook.com/saudeja",
     ],
   };
@@ -132,20 +142,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* --- INÍCIO: TAGS DE RASTREAMENTO --- */}
-
-        {/* Google Tag Manager (Gestor A) */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MXVBGFN5');`,
-          }}
-        />
-
-        {/* Google Tag Manager (Gestor B - NOVO) */}
+        {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -155,8 +152,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-MFK3Z64D');`,
           }}
         />
-
-        {/* --- FIM: TAGS DE RASTREAMENTO --- */}
+        {/* End Google Tag Manager */}
 
         {/* Injeção do Schema JSON-LD */}
         <script
@@ -168,19 +164,7 @@ export default function RootLayout({
       <body
         className={`font-sans ${aspekta.variable} ${poppins.variable} antialiased`}
       >
-        {/* --- INÍCIO: NOSCRIPTS DO GTM --- */}
-
-        {/* Google Tag Manager (noscript) - Gestor A */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MXVBGFN5"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-
-        {/* Google Tag Manager (noscript) - Gestor B - NOVO */}
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MFK3Z64D"
@@ -189,8 +173,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-
-        {/* --- FIM: NOSCRIPTS DO GTM --- */}
+        {/* End Google Tag Manager (noscript) */}
 
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
