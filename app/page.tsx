@@ -1,8 +1,4 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import {
   Heart,
   Baby,
@@ -20,7 +16,13 @@ import {
   Facebook,
   CheckCircle2,
   MessageCircle,
-  Maximize2, // Ícone para abrir a galeria
+  Maximize2,
+  ArrowRight, // NOVO
+  ChevronDown, // NOVO
+  ChevronUp, // NOVO
+  Bone, // NOVO (exemplo)
+  Eye, // NOVO (exemplo)
+  Apple, // NOVO (exemplo)
 } from "lucide-react";
 import {
   Dialog,
@@ -675,29 +677,62 @@ function ConhecaSection() {
 
 function EspecialidadesSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const [mostrarTodas, setMostrarTodas] = useState(false);
 
+  // Array expandido com a propriedade 'href' para as Landing Pages
   const specialties = [
     {
       icon: Baby,
       title: "Pediatria",
       description: "Cuidado com amor para os pequenos.",
+      href: "/especialidades/pediatria",
     },
     {
       icon: Heart,
       title: "Cardiologia",
       description: "Tecnologia para a saúde do coração.",
+      href: "/especialidades/cardiologia",
     },
     {
       icon: Users,
       title: "Geriatria",
       description: "Respeito e atenção à melhor idade.",
+      href: "/especialidades/geriatria",
     },
     {
       icon: Flower2,
       title: "Ginecologia",
       description: "Saúde integral da mulher.",
+      href: "/especialidades/ginecologia",
+    },
+    {
+      icon: Bone,
+      title: "Ortopedia",
+      description: "Prevenção e tratamento do sistema locomotor.",
+      href: "/especialidades/ortopedia",
+    },
+    {
+      icon: Eye,
+      title: "Oftalmologia",
+      description: "Cuidado especializado para a sua visão.",
+      href: "/especialidades/oftalmologia",
+    },
+    {
+      icon: Apple,
+      title: "Nutrição",
+      description: "Reeducação alimentar e foco em bem-estar.",
+      href: "/especialidades/nutricao",
+    },
+    {
+      icon: Activity,
+      title: "Clínica Médica",
+      description: "Acompanhamento geral e preventivo.",
+      href: "/especialidades/clinica-medica",
     },
   ];
+
+  // Controla quantos cards aparecem (4 inicialmente, ou todos se o state for true)
+  const especialidadesVisiveis = mostrarTodas ? specialties : specialties.slice(0, 4);
 
   return (
     <section id="especialidades" className="py-24 bg-slate-50" ref={ref}>
@@ -711,33 +746,62 @@ function EspecialidadesSection() {
           </h2>
           <p className="text-slate-600 text-lg">
             Cobrimos as principais áreas da medicina para garantir o cuidado
-            completo da sua família.
+            completo da sua família. Selecione para saber mais.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {specialties.map((specialty, index) => (
-            <div
-              key={index}
-              className={`group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+          {especialidadesVisiveis.map((specialty, index) => (
+            <Link
+              href={specialty.href}
+              key={specialty.title}
+              className={`group relative p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: `${(index % 4) * 100}ms` }}
             >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center transition-colors mb-6">
+              {/* Micro-interação Premium: Seta lateral revelada no Hover */}
+              <div className="absolute top-8 right-8 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary">
+                <ArrowRight className="w-5 h-5" />
+              </div>
+
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center transition-colors mb-6 shrink-0">
                 <specialty.icon className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
                 {specialty.title}
               </h3>
-              <p className="text-slate-500 leading-relaxed">
+              <p className="text-slate-500 leading-relaxed flex-grow">
                 {specialty.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
+
+        {/* Botão de Toggle (Progressive Disclosure) */}
+        {specialties.length > 4 && (
+          <div className="mt-12 flex justify-center">
+            <Button
+              variant="outline"
+              onClick={() => setMostrarTodas(!mostrarTodas)}
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-white h-12 px-8 text-lg transition-all shadow-sm"
+            >
+              {mostrarTodas ? (
+                <>
+                  <ChevronUp className="mr-2 w-5 h-5" />
+                  Ver menos
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="mr-2 w-5 h-5" />
+                  Ver todas as {specialties.length} especialidades
+                </>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
