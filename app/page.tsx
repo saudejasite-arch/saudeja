@@ -1,4 +1,23 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 import {
   Heart,
   Baby,
@@ -17,26 +36,13 @@ import {
   CheckCircle2,
   MessageCircle,
   Maximize2,
-  ArrowRight, // NOVO
-  ChevronDown, // NOVO
-  ChevronUp, // NOVO
-  Bone, // NOVO (exemplo)
-  Eye, // NOVO (exemplo)
-  Apple, // NOVO (exemplo)
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  Bone,
+  Eye,
+  Apple,
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
 // --- HOOKS ---
 const useScrollAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
