@@ -746,7 +746,7 @@ function EspecialidadesSection() {
           </h2>
           <p className="text-slate-600 text-lg">
             Cobrimos as principais áreas da medicina para garantir o cuidado
-            completo da sua família. Selecione para saber mais.
+            completo da sua família. Selecione para saber mais!
           </p>
         </div>
 
