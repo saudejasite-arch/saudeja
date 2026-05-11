@@ -267,9 +267,44 @@ export default function UltrassomLandingPage() {
         </div>
       </section>
 
-      {/* FOOTER SIMPLIFICADO */}
-      <footer className="py-12 border-t border-slate-100 text-center text-slate-400 text-sm bg-white">
-        <p>© 2026 Saúde Já. Diagnóstico por imagem com excelência.</p>
+{/* FOOTER COMPLETO PADRÃO SAÚDE JÁ */}
+      <footer className="bg-[#1a4f5a] text-white pt-16 pb-8">
+        <div className="container-custom mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
+            <div className="space-y-6">
+              <div className="font-heading text-3xl font-bold text-white">Saúde Já.</div>
+              <p className="text-white/70 leading-relaxed">
+                A cuidar de si com excelência, tecnologia e carinho. A sua saúde é a nossa prioridade.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-purple-400">Endereço</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-purple-400 mt-1" />
+                  <span>R. N S da Glória, 203 - Campo Grande<br/>Recife - PE, 52031-050</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-6 text-purple-400">Contacto Urgente</h4>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-purple-400" />
+                  (81) 3204-5760
+                </li>
+                <li>
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-block mt-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-xl font-medium transition-colors w-full text-center">
+                    Agendar via WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center text-sm text-white/50">
+            <p>© 2026 Saúde Já. Todos os direitos reservados. Design by @EZZECOMUNICAÇÃO</p>
+          </div>
+        </div>
       </footer>
 
       {/* BOTÃO FLUTUANTE DO WHATSAPP */}
