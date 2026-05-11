@@ -909,69 +909,59 @@ function EspecialistasSection({
 
 function ExamesSection() {
   const { ref, isVisible } = useScrollAnimation();
-
   const exams = [
     {
       icon: Activity,
       title: "Ecocardiograma Fetal",
-      description:
-        "Avaliação detalhada do coração do bebê com tecnologia de ponta.",
+      description: "Avaliação detalhada do coração do bebê com tecnologia de ponta.",
+      href: "/especialidades/ecofetal" // Rota criada anteriormente
     },
     {
       icon: Stethoscope,
       title: "Eletrocardiograma",
       description: "Monitoramento preciso da atividade elétrica cardíaca.",
+      href: "/especialidades/eletrocardiograma" // Nova rota
     },
     {
       icon: CheckCircle2,
       title: "Exames de Rotina",
-      description:
-        "Check-ups laboratoriais completos para cuidar da sua saúde.",
+      description: "Check-ups laboratoriais completos para cuidar da sua saúde.",
+      href: "/especialidades/exames-de-rotina" // Nova rota
     },
   ];
 
   return (
-    <section
-      id="exames"
-      className="py-24 bg-slate-50 relative overflow-hidden"
-      ref={ref}
-    >
+    <section id="exames" className="py-24 bg-slate-50 relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12"></div>
-
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-            Diagnóstico
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
-            Exames Realizados
-          </h2>
-          <p className="text-slate-600 text-lg">
-            Precisão e rapidez nos resultados para o seu diagnóstico.
-          </p>
+          <span className="text-primary font-semibold tracking-wider uppercase text-sm">Diagnóstico</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">Exames Realizados</h2>
+          <p className="text-slate-600 text-lg">Precisão e rapidez nos resultados para o seu diagnóstico.</p>
         </div>
-
         <div className="grid md:grid-cols-3 gap-8">
           {exams.map((exam, index) => (
-            <Card
-              key={index}
-              className={`p-8 border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="w-16 h-16 rounded-full bg-secondary/30 flex items-center justify-center text-primary mb-6">
-                <exam.icon className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                {exam.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {exam.description}
-              </p>
-            </Card>
+            <Link href={exam.href} key={index} className="group">
+              <Card
+                className={`p-8 h-full border-none shadow-lg group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-white rounded-3xl ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <div className="w-16 h-16 rounded-full bg-secondary/30 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <exam.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+                  {exam.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  {exam.description}
+                </p>
+                <div className="flex items-center text-primary font-bold text-sm">
+                  Saber mais <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
