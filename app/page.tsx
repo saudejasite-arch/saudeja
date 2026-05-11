@@ -748,7 +748,7 @@ function EspecialidadesSection() {
       icon: HeartPulse,
       title: "Cardiopediatria",
       description: "Atenção cardiológica exclusiva para crianças.",
-      href: "https://www.gruposaudeja.com.br/especialidades/cardio-pediatria",
+      href: "https://www.gruposaudeja.com.br/especialidades/ecofetal",
     },
     {
       icon: Monitor,
