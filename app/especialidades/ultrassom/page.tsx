@@ -13,7 +13,9 @@ import {
   ArrowLeft,
   ShieldCheck,
   MonitorPlay,
-  HeartPulse
+  HeartPulse,
+  MapPin,
+  Phone
 } from "lucide-react";
 
 // --- HOOKS DE ANIMAÇÃO ---
@@ -111,7 +113,7 @@ export default function UltrassomLandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-purple-500 selection:text-white">
       
-      {/* HEADER SIMPLIFICADO COMO NA PÁGINA DE EXAMES */}
+      {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="container-custom mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-slate-600 hover:text-purple-600 transition-colors">
@@ -133,7 +135,7 @@ export default function UltrassomLandingPage() {
         </div>
       </header>
 
-      {/* HERO SECTION - SEM IMAGENS, FOCADA EM TEXTO E CONVERSÃO */}
+      {/* HERO SECTION */}
       <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-white to-purple-50 relative overflow-hidden" ref={heroRef}>
         <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-purple-200/30 rounded-full blur-3xl"></div>
         <div className="container-custom mx-auto px-6 relative z-10">
@@ -210,7 +212,7 @@ export default function UltrassomLandingPage() {
             ))}
           </div>
           
-          {/* BANNER AZUL DE CRO IDÊNTICO À PÁGINA DE EXAMES */}
+          {/* BANNER DE CRO */}
           <div className="mt-12 p-6 bg-purple-50 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-purple-100">
              <div className="flex items-center gap-4">
                  <div className="bg-purple-100 p-3 rounded-full text-purple-600">
@@ -228,7 +230,7 @@ export default function UltrassomLandingPage() {
         </div>
       </section>
 
-      {/* DIFERENCIAIS - DARK SECTION COMO NA PÁGINA DE EXAMES */}
+      {/* DIFERENCIAIS */}
       <section className="py-20 bg-slate-900 text-white">
         <div className="container-custom mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
@@ -251,7 +253,7 @@ export default function UltrassomLandingPage() {
         </div>
       </section>
 
-      {/* FAQ - PERGUNTAS FREQUENTES */}
+      {/* FAQ */}
       <section className="py-20 bg-white">
         <div className="container-custom mx-auto px-6 max-w-3xl">
           <div className="text-center mb-12">
@@ -267,7 +269,7 @@ export default function UltrassomLandingPage() {
         </div>
       </section>
 
-{/* FOOTER COMPLETO PADRÃO SAÚDE JÁ */}
+      {/* FOOTER COMPLETO PADRÃO SAÚDE JÁ */}
       <footer className="bg-[#1a4f5a] text-white pt-16 pb-8">
         <div className="container-custom mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
