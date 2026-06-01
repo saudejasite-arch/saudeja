@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Allerta, Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleTag } from '@next/third-parties/google';
+import Script from "next/script";
 import "./globals.css";
 import { Suspense } from "react";
 
@@ -142,41 +144,52 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MFK3Z64D');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
-
         {/* Injeção do Schema JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <meta name="theme-color" content="#61B097" />
+
+        {/* PIXEL DA META - NOVO GESTOR */}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '2885994798237464');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
       </head>
       <body
         className={`font-sans ${aspekta.variable} ${poppins.variable} antialiased`}
       >
-        {/* Google Tag Manager (noscript) */}
+        {/* FALLBACK DO PIXEL DA META */}
         <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MFK3Z64D"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=2885994798237464&ev=PageView&noscript=1"
+            alt=""
+          />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
+
+        {/* GOOGLE TAG - NOVO GESTOR */}
+        <GoogleTag gaId="GT-PBSXCT9F" />
       </body>
     </html>
   );
